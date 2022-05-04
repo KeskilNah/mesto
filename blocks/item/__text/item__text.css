@@ -1,0 +1,12 @@
+.item__text {
+  color: #000000;
+  margin: 25px 0 0 21px;
+  display: inline-block;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 170px;
+}

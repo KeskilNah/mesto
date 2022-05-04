@@ -1,0 +1,27 @@
+.profile__title {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin: 0;
+  font-size: 42px;
+  line-height: 48px;
+  font-weight: 500;
+  padding-right: 43px;
+  align-self: end;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__title {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    justify-self: center;
+    font-size: 27px;
+    line-height: 33px;
+    padding-right: 0;
+    max-width: 189px;
+    margin-bottom: 14px;
+  }
+}

@@ -1,0 +1,12 @@
+.popup__exit {
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../../../images/icons/CloseIcon.svg);
+}
+
+.popup__exit:hover {
+  opacity: 0.6;
+}

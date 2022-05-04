@@ -1,0 +1,6 @@
+.item {
+  max-height: 361px;
+  overflow: hidden;
+  border-radius: 10px;
+  line-height: 0;
+}

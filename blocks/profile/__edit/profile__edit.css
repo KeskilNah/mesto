@@ -1,0 +1,27 @@
+.profile__edit {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  justify-self: end;
+  align-self: end;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__edit {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    justify-self: end;
+    align-self: center;
+    max-width: 18px;
+    min-height: 18px;
+    position: relative;
+    right: -10px;
+  }
+}
+
+.profile__edit:hover {
+  opacity: 0.6;
+}
