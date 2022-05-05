@@ -8,76 +8,77 @@
   <title>Mesto</title>
 </head>
 <body class="page">
-  <form action="#" method="get" enctype="multipart/form-data" class="form">
-    <div class="popup">
+  
+  <div class="popup">
     <div class="popup__container">
-      <a href="#" class="popup__exit"></a>
+      <button class="popup__exit"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" class="popup__name" value="Жак-Ив Кусто" id="name">
-      <input type="text" class="popup__description" value="Исследователь океана" id="description">
-      <input type="submit" value="Сохранить" class="popup__save-button">
+      <form action="#" class="form"></form>
+        <input type="text" class="popup__text popup__text_name" value="Жак-Ив Кусто" id="name">
+        <input type="text" class="popup__text popup__text_description" value="Исследователь океана" id="description">
+        <button type="submit" class="popup__save-button">Сохранить</button>
+    </form>
     </div>
   </div>
-  </form>
-  <div class="wrapper">
-    
+  <div class="page__wrapper">
     <header class="header">
       <img src="./images/logo.svg" alt="лого_место" class="header__logo">
-      <div class="header__line"></div>
     </header>
     <main class="main">
       <section class="profile">
-        <img src="./images/avatar(1).png" alt="Жак-Ив Кусто" class="profile__avatar">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <img src="./images/icons/EditButton.svg" alt="изменить профиль" class="profile__edit">
-        <p class="profile__subtitle">Исследователь океана</p>
-        <a class="profile__button"></a>
+        <div class="profile__wrapper">
+          <img src="./images/avatar(1).png" alt="Жак-Ив Кусто" class="profile__avatar">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__edit"></button>
+          <p class="profile__subtitle">Исследователь океана</p>
+          <button type="button" class="profile__button"></button>
+        </div>
       </section>
-              <!-- Был использован div так как валидатор ругается, что нет заголовка -->
-      <div class="gallery"> 
-        <div class="item">
+      <section class="gallery"> 
+        <!-- не совсем понял зачем нужно было делать через список, но сделал-->
+        <ul class="item">
           <img src="./images/karachevsk.png" alt="Карачаевск" class="item__image">
-          <div class="item__description">
+          <li class="item__description">
             <p class="item__text">Карачаевк</p>
-            <div class="item__like"></div> <!-- использован div т.к. пока ничего с ним не делаем-->
-          </div>
-        </div>
-        <div class="item">
+            <button type="button" class="item__like"></button>
+          </li>
+        </ul>
+        <ul class="item">
           <img src="./images/elbrus.png" alt="Эльбрус" class="item__image">
-          <div class="item__description">
+          <li class="item__description">
             <p class="item__text">Гора Эльбрус</p>
-            <div class="item__like"></div>
-          </div>
-        </div>
-        <div class="item">
+            <button type="button" class="item__like"></button>
+          </li>
+        </ul>
+        <ul class="item">
           <img src="./images/dombai.png" alt="Домбай" class="item__image">
-          <div class="item__description">
+          <li class="item__description">
             <p class="item__text">Домбай</p>
-            <div class="item__like"></div>
-          </div>
-        </div>
-        <div class="item">
+            <button type="button" class="item__like"></button>
+          </li>
+        </ul>
+        <ul class="item">
           <img src="./images/elbrus.png" alt="Ещё Эльбрус" class="item__image">
-          <div class="item__description">
+          <li class="item__description">
             <p class="item__text">Гора Эльбрус</p>
-            <div class="item__like"></div>
-          </div>
-        </div>
-        <div class="item">
+            <button type="button" class="item__like"></button>
+          </li>
+        </ul>
+        <ul class="item">
           <img src="./images/dombai.png" alt="Ещё домбай" class="item__image">
-          <div class="item__description">
+          <li class="item__description">
             <p class="item__text">Домбай</p>
-            <div class="item__like"></div>
-          </div>
-        </div>
-        <div class="item">
+            <button type="button" class="item__like"></button>
+          </li>
+        </ul>
+        <ul class="item">
           <img src="./images/karachevsk.png" alt="Карачаево-Черкессия" class="item__image">
-          <div class="item__description">
+          <li class="item__description">
             <p class="item__text">Карачаево-Черкессия</p>
-            <div class="item__like"></div>
-          </div>
-        </div>
-      </div>
+            <button type="button" class="item__like"></button>
+          </li>
+        </ul>
+      </section>
     </main>
     <footer class="footer">
       <p class="footer__author">© 2020 Mesto Russia</p>

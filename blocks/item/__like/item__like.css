@@ -3,12 +3,17 @@
   height: 19px;
   margin: 30px 20px;
   background: url(../../../images/icons/like.svg) no-repeat center;
+  border: none;
+  background-color: transparent;
 }
 
 .item__like:hover {
   background-image: url(../../../images/icons/like_hover.svg);
+  cursor: pointer;
 }
 
 .item__like:active {
   background-image: url(../../../images/icons/like_active.svg);
+  cursor: pointer;
 }
+

@@ -9,6 +9,9 @@
   font-weight: 500;
   padding-right: 43px;
   align-self: end;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 767px) {
