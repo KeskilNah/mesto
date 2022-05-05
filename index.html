@@ -8,16 +8,15 @@
   <title>Mesto</title>
 </head>
 <body class="page">
-  
   <div class="popup">
     <div class="popup__container">
       <button class="popup__exit"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form action="#" class="form"></form>
+      <form action="#" class="form">
         <input type="text" class="popup__text popup__text_name" value="Жак-Ив Кусто" id="name">
         <input type="text" class="popup__text popup__text_description" value="Исследователь океана" id="description">
         <button type="submit" class="popup__save-button">Сохранить</button>
-    </form>
+      </form>
     </div>
   </div>
   <div class="page__wrapper">
@@ -35,49 +34,50 @@
         </div>
       </section>
       <section class="gallery"> 
-        <!-- не совсем понял зачем нужно было делать через список, но сделал-->
-        <ul class="item">
+        <ul class="gallery__items">
+        <li class="item">
           <img src="./images/karachevsk.png" alt="Карачаевск" class="item__image">
-          <li class="item__description">
+          <div class="item__description">
             <p class="item__text">Карачаевк</p>
             <button type="button" class="item__like"></button>
-          </li>
-        </ul>
-        <ul class="item">
+          </div>
+        </li>
+        <li class="item">
           <img src="./images/elbrus.png" alt="Эльбрус" class="item__image">
-          <li class="item__description">
+          <div class="item__description">
             <p class="item__text">Гора Эльбрус</p>
             <button type="button" class="item__like"></button>
-          </li>
-        </ul>
-        <ul class="item">
+          </div>
+        </li>
+        <li class="item">
           <img src="./images/dombai.png" alt="Домбай" class="item__image">
-          <li class="item__description">
+          <div class="item__description">
             <p class="item__text">Домбай</p>
             <button type="button" class="item__like"></button>
-          </li>
-        </ul>
-        <ul class="item">
+          </div>
+        </li>
+        <li class="item">
           <img src="./images/elbrus.png" alt="Ещё Эльбрус" class="item__image">
-          <li class="item__description">
+          <div class="item__description">
             <p class="item__text">Гора Эльбрус</p>
             <button type="button" class="item__like"></button>
-          </li>
-        </ul>
-        <ul class="item">
+          </div>
+        </li>
+        <li class="item">
           <img src="./images/dombai.png" alt="Ещё домбай" class="item__image">
-          <li class="item__description">
+          <div class="item__description">
             <p class="item__text">Домбай</p>
             <button type="button" class="item__like"></button>
-          </li>
-        </ul>
-        <ul class="item">
+          </div>
+        </li>
+        <li class="item">
           <img src="./images/karachevsk.png" alt="Карачаево-Черкессия" class="item__image">
-          <li class="item__description">
+          <div class="item__description">
             <p class="item__text">Карачаево-Черкессия</p>
             <button type="button" class="item__like"></button>
-          </li>
-        </ul>
+          </div>
+        </li>
+      </ul>
       </section>
     </main>
     <footer class="footer">
