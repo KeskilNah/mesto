@@ -7,7 +7,7 @@
   background-image: url(../../../images/icons/CloseIcon.svg);
   border: none;
   background-color: transparent;
-
+  padding: 0;
 }
 
 .popup__exit:hover {
