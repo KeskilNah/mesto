@@ -8,12 +8,7 @@
 }
 
 .item__like:hover {
-  background-image: url(../../../images/icons/like_hover.svg);
-  cursor: pointer;
-}
-
-.item__like:active {
-  background-image: url(../../../images/icons/like_active.svg);
+  opacity: 0.5;
   cursor: pointer;
 }
 

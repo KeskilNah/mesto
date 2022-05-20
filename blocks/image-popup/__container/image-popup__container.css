@@ -1,0 +1,15 @@
+.image-popup__container {
+text-align: center;
+background-color: #FFFFFF;
+display: flex;
+flex-direction: column;
+position: relative;
+border-radius: 10px;
+
+}
+
+@media screen and (max-width: 767px) {
+  .image-popup__container{
+
+}
+}

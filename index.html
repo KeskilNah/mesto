@@ -15,8 +15,26 @@
       <form action="#" class="popup__form">
         <input type="text" class="popup__text popup__text_name" value="Жак-Ив Кусто" id="name">
         <input type="text" class="popup__text popup__text_description" value="Исследователь океана" id="description">
-        <button type="submit" class="popup__save-button">Сохранить</button>
+        <button class="popup__save-button">Сохранить</button>
       </form>
+    </div>
+  </div>
+  <div class="adding-popup">
+    <div class="adding-popup__container">
+      <button class="adding-popup__exit"></button>
+      <h2 class="adding-popup__title">Новое место</h2>
+      <form class="adding-popup__form">
+        <input type="text" class="adding-popup__text adding-popup__text_place" placeholder="Название" value="" id="place">
+        <input type="text" class="adding-popup__text adding-popup__text_url" placeholder="Ссылка на картинку" value="" id="link">
+        <button type="submit" class="adding-popup__save-button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="image-popup">
+    <div class="image-popup__container">
+      <button class="image-popup__exit"></button>
+      <p class="image-popup__title">asdasd</p>
+      <img src="./images/avatar(1).png" alt="" class="image-popup__pic">
     </div>
   </div>
   <div class="page__wrapper">
@@ -30,53 +48,13 @@
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button type="button" class="profile__edit"></button>
           <p class="profile__subtitle">Исследователь океана</p>
-          <button type="button" class="profile__button"></button>
+          <button class="profile__button"></button>
         </div>
       </section>
       <section class="gallery"> 
         <ul class="gallery__items">
-        <li class="item">
-          <img src="./images/karachevsk.png" alt="Карачаевск" class="item__image">
-          <div class="item__description">
-            <p class="item__text">Карачаевк</p>
-            <button type="button" class="item__like"></button>
-          </div>
-        </li>
-        <li class="item">
-          <img src="./images/elbrus.png" alt="Эльбрус" class="item__image">
-          <div class="item__description">
-            <p class="item__text">Гора Эльбрус</p>
-            <button type="button" class="item__like"></button>
-          </div>
-        </li>
-        <li class="item">
-          <img src="./images/dombai.png" alt="Домбай" class="item__image">
-          <div class="item__description">
-            <p class="item__text">Домбай</p>
-            <button type="button" class="item__like"></button>
-          </div>
-        </li>
-        <li class="item">
-          <img src="./images/elbrus.png" alt="Ещё Эльбрус" class="item__image">
-          <div class="item__description">
-            <p class="item__text">Гора Эльбрус</p>
-            <button type="button" class="item__like"></button>
-          </div>
-        </li>
-        <li class="item">
-          <img src="./images/dombai.png" alt="Ещё домбай" class="item__image">
-          <div class="item__description">
-            <p class="item__text">Домбай</p>
-            <button type="button" class="item__like"></button>
-          </div>
-        </li>
-        <li class="item">
-          <img src="./images/karachevsk.png" alt="Карачаево-Черкессия" class="item__image">
-          <div class="item__description">
-            <p class="item__text">Карачаево-Черкессия</p>
-            <button type="button" class="item__like"></button>
-          </div>
-        </li>
+
+
       </ul>
       </section>
     </main>
@@ -85,6 +63,16 @@
     </footer>
 
   </div>
+  <template class="item-template">
+    <li class="item">
+      <img src="" alt="#" class="item__image">
+      <div class="item__description">
+        <p class="item__text"></p>
+        <button type="button" class="item__like"></button>
+      </div>
+      <button class="item__delete"></button>
+    </li>
+  </template>
   <script src="./js/script.js"></script>
 </body>
 </html>
