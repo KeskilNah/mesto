@@ -1,4 +1,4 @@
-.popup__text {  
+.edit-popup__text {  
   font-family: 'Inter', Helvetica, sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -9,6 +9,6 @@
   padding-bottom: 10px;
 }
 
-.popup__text:focus{
+.edit-popup__text:focus{
   outline: none;
 }

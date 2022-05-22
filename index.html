@@ -8,14 +8,14 @@
   <title>Mesto</title>
 </head>
 <body class="page">
-  <div class="popup">
-    <div class="popup__container">
-      <button class="popup__exit"></button>
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <form action="#" class="popup__form">
-        <input type="text" class="popup__text popup__text_name" value="Жак-Ив Кусто" id="name">
-        <input type="text" class="popup__text popup__text_description" value="Исследователь океана" id="description">
-        <button class="popup__save-button">Сохранить</button>
+  <div class="edit-popup">
+    <div class="edit-popup__container">
+      <button class="edit-popup__exit"></button>
+      <h2 class="edit-popup__title">Редактировать профиль</h2>
+      <form action="#" class="edit-popup__form">
+        <input type="text" class="edit-popup__text edit-popup__text_name" value="Жак-Ив Кусто" placeholder="Имя" id="name">
+        <input type="text" class="edit-popup__text edit-popup__text_description" value="Исследователь океана" placeholder="Род деятельности"  id="description">
+        <button class="edit-popup__save-button">Сохранить</button>
       </form>
     </div>
   </div>
@@ -73,6 +73,7 @@
       <button class="item__delete"></button>
     </li>
   </template>
+  <script src="./js/cards.js"></script>
   <script src="./js/script.js"></script>
 </body>
 </html>
