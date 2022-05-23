@@ -9,7 +9,7 @@ const nameOutput = document.querySelector('.profile__title');
 const descriptionOutput = document.querySelector('.profile__subtitle');
 
 const addingPopup = document.querySelector('.adding-popup');
-const add = document.querySelector('.profile__button');
+const addButton = document.querySelector('.profile__button');
 const exitAdd = document.querySelector('.adding-popup__exit');
 const addingForm = document.querySelector('.adding-popup__form');
 const placeInput = addingForm.querySelector('.adding-popup__text_place');
@@ -42,21 +42,21 @@ function makeGallery (item) {
   textItem.textContent = cardName;
   imgItem.src = cardLink;
   imgItem.alt = cardName;
-  startList.prepend(itemCell);
+  return itemCell;
 };
 
-//функция добавления карточки в разметку из массива initialCards
-function renderCard () {
-  initialCards.forEach(makeGallery);
+//функция добавления карточки в разметку
+function renderCard (cell) {
+  startList.prepend(makeGallery(cell));
 }
 
 //вызов функции добавления карточки в разметку из массива initialCards
-renderCard ()
+initialCards.forEach(renderCard);
 
 //функция добавляения нового элемента из заданых значений
 function addItem(evt) {
   evt.preventDefault();
-  makeGallery(({link: urlInput.value, name: placeInput.value}));
+  renderCard(({link: urlInput.value, name: placeInput.value}));
   closePopup (addingPopup);
 }
 
@@ -79,7 +79,7 @@ function popupImg (imgLink) {
 
 //универсальная функция открытия попапа
 function openPopup(popup) {
-  popup.classList.toggle('popup_opend');
+  popup.classList.add('popup_opend');
 }
 //универсальная функция закрытия попапа
 function closePopup (popup) {
@@ -97,7 +97,7 @@ function btnLikeFun (evt) {
 }
 
 //слушатель открытия попап окна с добавлением элемента при нажатии на плюсик
-add.addEventListener('click', function(evt){
+addButton.addEventListener('click', function(evt){
   openPopup (addingPopup);
 });
 
