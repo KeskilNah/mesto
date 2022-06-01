@@ -1,3 +1,4 @@
+const page = document.querySelector('.page');
 const editPopup = document.querySelector('.edit-popup');
 const btnEdit = document.querySelector('.profile__edit');
 const closeEdit = document.querySelector('.edit-popup__exit');
@@ -7,7 +8,7 @@ const jobInput = document.querySelector('.edit-popup__text_description');
 const saveButton = document.querySelector('.edit-popup__save-button');
 const nameOutput = document.querySelector('.profile__title');
 const descriptionOutput = document.querySelector('.profile__subtitle');
-
+const editOverlay = document.querySelector('.edit-popup__overlay');
 const addingPopup = document.querySelector('.adding-popup');
 const addButton = document.querySelector('.profile__button');
 const exitAdd = document.querySelector('.adding-popup__exit');
@@ -16,13 +17,13 @@ const placeInput = addingForm.querySelector('.adding-popup__text_place');
 const urlInput = addingForm.querySelector('.adding-popup__text_url');
 const addSaveButton = addingForm.querySelector('.adding-popup__save-button');
 const startList = document.querySelector('.gallery__items');
-const addForm = document.querySelector('.adding-popup__form');
-
+const addOverlay = document.querySelector('.adding-popup__overlay');
 const imgPopup = document.querySelector('.image-popup');
 const imgExit = document.querySelector('.image-popup__exit')
 const imgPopupPic = document.querySelector('.image-popup__pic');
 const imgPopupTitle = document.querySelector('.image-popup__title');
 const itemTemplate = document.querySelector('.item-template').content.querySelector('.item');
+const popupInput = document.querySelector('.popup__input');
 
 //переворачиваем наш массив, что бы при добавлении нового элемента он, добавлялся в начало
 initialCards.reverse();
@@ -37,7 +38,7 @@ function makeGallery (item) {
   const textItem = itemCell.querySelector('.item__text');
   const btnLikeItem = itemCell.querySelector('.item__like');
   btnDeletItem.addEventListener('click', handleDeleteCard);
-  btnLikeItem.addEventListener('click', btnLikeFun);
+  btnLikeItem.addEventListener('click', handleLike);
   imgItem.addEventListener('click', popupImg);
   textItem.textContent = cardName;
   imgItem.src = cardLink;
@@ -61,7 +62,11 @@ function addItem(evt) {
 }
 
 //слушатель добавляения нового элемента
-addingForm.addEventListener('submit', addItem);
+addingForm.addEventListener('submit', function (evt) {
+  // Отменим стандартное поведение
+  evt.preventDefault();
+  addItem(evt);
+});
 
 //функция удаления элемента
 function handleDeleteCard (evt) {
@@ -92,7 +97,7 @@ imgExit.addEventListener('click', function(evt) {
 })
 
 //функция изменения изображения при клике на лайк
-function btnLikeFun (evt) {
+function handleLike (evt) {
   evt.target.classList.toggle('item__like_active');
 }
 
@@ -124,4 +129,24 @@ function changeName() {
 }
 
 //слушатель кнопки сохранения попап окна с изменением имени и описания
-editForm.addEventListener('submit', changeName);
+editForm.addEventListener('submit', function (evt) {
+  // Отменим стандартное поведение
+  evt.preventDefault();
+  changeName();
+});
+
+editOverlay.addEventListener('click', function(evt){
+  closePopup (editPopup);
+});
+
+addOverlay.addEventListener('click', function(evt){
+  closePopup (addingPopup);
+});
+
+page.addEventListener('keydown', function(evt){
+  if (evt.key === 'Escape'){
+    closePopup (editPopup);
+    closePopup (addingPopup);
+    closePopup(imgPopup);
+    }
+});
