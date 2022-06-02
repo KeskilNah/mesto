@@ -1,4 +1,5 @@
 const page = document.querySelector('.page');
+const popups = document.querySelectorAll('.popup');
 const editPopup = document.querySelector('.edit-popup');
 const btnEdit = document.querySelector('.profile__edit');
 const closeEdit = document.querySelector('.edit-popup__exit');
@@ -127,10 +128,17 @@ btnEdit.addEventListener('click', function(evt){
   openPopup (editPopup);
 });
 
-//слушатель закрытия попап окна с изменением имени и описания при нажатии на крестик
-closeEdit.addEventListener('click', function(evt){
-  closePopup (editPopup);
-});
+//вешаем на все попапы слушатель закрытия попап окна при нажатии на крестик или оверлей
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+          closePopup(popup)
+      }
+      if (evt.target.classList.contains('popup__close')) {
+        closePopup(popup)
+      }
+  })
+})
 
 //функция изменения имени и описания
 function changeName() {
@@ -144,14 +152,6 @@ editForm.addEventListener('submit', function (evt) {
   // Отменим стандартное поведение
   evt.preventDefault();
   changeName();
-});
-
-editOverlay.addEventListener('click', function(evt){
-  closePopup (editPopup);
-});
-
-addOverlay.addEventListener('click', function(evt){
-  closePopup (addingPopup);
 });
 
 

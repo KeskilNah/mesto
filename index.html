@@ -9,9 +9,8 @@
 </head>
 <body class="page">
   <div class="edit-popup popup">
-    <div class="edit-popup__overlay"></div>
     <div class="edit-popup__container">
-      <button class="edit-popup__exit"></button>
+      <button class="edit-popup__exit popup__close"></button>
       <h2 class="edit-popup__title">Редактировать профиль</h2>
       <form action="#" class="edit-popup__form popup__form" novalidate>
         <input type="text" class="edit-popup__text-name popup__input" value="Жак-Ив Кусто" placeholder="Имя" id="name-input" required minlength="2" maxlength="40">
@@ -23,9 +22,8 @@
     </div>
   </div>
   <div class="adding-popup popup">
-    <div class="adding-popup__overlay"></div>
     <div class="adding-popup__container">
-      <button class="adding-popup__exit"></button>
+      <button class="adding-popup__exit popup__close"></button>
       <h2 class="adding-popup__title">Новое место</h2>
       <form class="adding-popup__form popup__form" novalidate>
         <input type="text" class="adding-popup__text-place popup__input" placeholder="Название" value="" required minlength="2" maxlength="30" id="place-input">
