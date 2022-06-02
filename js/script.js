@@ -161,3 +161,4 @@ function closeByEscape(evt) {
     closePopup (openedPopup);
   }
 }
+//asdasd
