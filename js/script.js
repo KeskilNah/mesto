@@ -39,7 +39,7 @@ function makeGallery (item) {
   const btnLikeItem = itemCell.querySelector('.item__like');
   btnDeletItem.addEventListener('click', handleDeleteCard);
   btnLikeItem.addEventListener('click', handleLike);
-  imgItem.addEventListener('click', popupImg);
+  imgItem.addEventListener('click', openPopupImg);
   textItem.textContent = cardName;
   imgItem.src = cardLink;
   imgItem.alt = cardName;
@@ -62,22 +62,18 @@ function addItem(evt) {
 }
 
 //слушатель добавляения нового элемента
-<<<<<<< HEAD
-addForm.addEventListener('submit', addItem);
-=======
 addingForm.addEventListener('submit', function (evt) {
   // Отменим стандартное поведение
   evt.preventDefault();
   addItem(evt);
 });
->>>>>>> 1bfdac942e4d2255d599fb18ef36c02fefd993ac
 
 //функция удаления элемента
 function handleDeleteCard (evt) {
   evt.target.closest('.item').remove();
 }
 
-function popupImg (imgLink) {
+function openPopupImg (imgLink) {
   const imgSrc = imgLink.target.getAttribute('src');
   const imgName = imgLink.target.getAttribute('alt');
   imgPopupPic.src = imgSrc;
