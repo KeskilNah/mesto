@@ -39,7 +39,7 @@ function makeGallery (item) {
   const btnLikeItem = itemCell.querySelector('.item__like');
   btnDeletItem.addEventListener('click', handleDeleteCard);
   btnLikeItem.addEventListener('click', handleLike);
-  imgItem.addEventListener('click', popupImg);
+  imgItem.addEventListener('click', openPopupImg);
   textItem.textContent = cardName;
   imgItem.src = cardLink;
   imgItem.alt = cardName;
@@ -66,6 +66,7 @@ addingForm.addEventListener('submit', function (evt) {
   // Отменим стандартное поведение
   evt.preventDefault();
   addItem(evt);
+  evt.target.reset();
 });
 
 //функция удаления элемента
@@ -73,7 +74,7 @@ function handleDeleteCard (evt) {
   evt.target.closest('.item').remove();
 }
 
-function popupImg (imgLink) {
+function openPopupImg (imgLink) {
   const imgSrc = imgLink.target.getAttribute('src');
   const imgName = imgLink.target.getAttribute('alt');
   imgPopupPic.src = imgSrc;
@@ -84,11 +85,14 @@ function popupImg (imgLink) {
 
 //универсальная функция открытия попапа
 function openPopup(popup) {
-  popup.classList.add('popup_opend');
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEscape);
 }
+
 //универсальная функция закрытия попапа
 function closePopup (popup) {
-  popup.classList.remove('popup_opend');
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
 }
 
 //слушатель закрытия попап окна с изображением
@@ -111,8 +115,15 @@ exitAdd.addEventListener('click', function(evt){
   closePopup (addingPopup);
 });
 
+//функция добавления данных с сайта в инпуты в форме
+function handlerChangeName() {
+  nameInput.value = nameOutput.textContent;
+  jobInput.value = descriptionOutput.textContent ;
+}
+
 //слушатель открытия попап окна с изменением имени и описания при нажатии на карандашик
 btnEdit.addEventListener('click', function(evt){
+  handlerChangeName()
   openPopup (editPopup);
 });
 
@@ -143,10 +154,10 @@ addOverlay.addEventListener('click', function(evt){
   closePopup (addingPopup);
 });
 
-page.addEventListener('keydown', function(evt){
-  if (evt.key === 'Escape'){
-    closePopup (editPopup);
-    closePopup (addingPopup);
-    closePopup(imgPopup);
-    }
-});
+
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup (openedPopup);
+  }
+}
