@@ -96,10 +96,6 @@ function closePopup (popup) {
   document.removeEventListener('keydown', closeByEscape);
 }
 
-//слушатель закрытия попап окна с изображением
-imgExit.addEventListener('click', function(evt) {
-  closePopup(imgPopup);
-})
 
 //функция изменения изображения при клике на лайк
 function handleLike (evt) {
@@ -109,11 +105,6 @@ function handleLike (evt) {
 //слушатель открытия попап окна с добавлением элемента при нажатии на плюсик
 addButton.addEventListener('click', function(evt){
   openPopup (addingPopup);
-});
-
-//слушатель закрытия попап окна с добавлением элемента при нажатии на плюсик
-exitAdd.addEventListener('click', function(evt){
-  closePopup (addingPopup);
 });
 
 //функция добавления данных с сайта в инпуты в форме
