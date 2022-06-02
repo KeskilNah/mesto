@@ -87,7 +87,7 @@ function addItem(evt) {
 }
 
 //слушатель добавляения нового элемента
-addSaveButton.addEventListener('click', addItem);
+addForm.addEventListener('submit', addItem);
 
 //функция удаления элемента
 function btnDeleteFun (evt) {
