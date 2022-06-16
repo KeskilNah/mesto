@@ -9,11 +9,10 @@
 </head>
 <body class="page">
   <div class="edit-popup popup">
-    <div class="edit-popup__overlay"></div>
     <div class="edit-popup__container">
-      <button class="edit-popup__exit"></button>
+      <button class="edit-popup__exit popup__close"></button>
       <h2 class="edit-popup__title">Редактировать профиль</h2>
-      <form action="#" class="edit-popup__form popup__form" novalidate>
+      <form action="#" class="edit-popup__form popup__form" name="edit-form" novalidate>
         <input type="text" class="edit-popup__text-name popup__input" value="Жак-Ив Кусто" placeholder="Имя" id="name-input" required minlength="2" maxlength="40">
         <p class="popup__error name-input-error">asd</p>
         <input type="text" class="edit-popup__text-description popup__input" value="Исследователь океана" placeholder="Род деятельности"  id="description-input" required minlength="2" maxlength="200">
@@ -23,11 +22,10 @@
     </div>
   </div>
   <div class="adding-popup popup">
-    <div class="adding-popup__overlay"></div>
     <div class="adding-popup__container">
-      <button class="adding-popup__exit"></button>
+      <button class="adding-popup__exit popup__close"></button>
       <h2 class="adding-popup__title">Новое место</h2>
-      <form class="adding-popup__form popup__form" novalidate>
+      <form class="adding-popup__form popup__form" name="adding-form" novalidate>
         <input type="text" class="adding-popup__text-place popup__input" placeholder="Название" value="" required minlength="2" maxlength="30" id="place-input">
         <p class="popup__error place-input-error">asd</p>
         <input type="url" class="adding-popup__text-url popup__input" placeholder="Ссылка на картинку" value="" required id="url-input">
@@ -36,9 +34,9 @@
       </form>
     </div>
   </div>
-  <div class="image-popup">
+  <div class="image-popup popup">
     <div class="image-popup__container">
-      <button class="image-popup__exit"></button>
+      <button class="image-popup__exit popup__close"></button>
       <p class="image-popup__title">asdasd</p>
       <img src="./images/avatar(1).png" alt="" class="image-popup__pic">
     </div>
@@ -79,8 +77,8 @@
       <button class="item__delete"></button>
     </li>
   </template>
-  <script src="./js/cards.js"></script>
-  <script src="./js/script.js"></script>
-  <script src="./js/validate.js"></script>
+  <script type="module" src="./js/script.js"></script>
+  <script type="module" src="./js/cards.js"></script>
+  <script type="module" src="./js/validate.js"></script>
 </body>
 </html>
