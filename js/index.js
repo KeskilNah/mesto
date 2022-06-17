@@ -1,5 +1,6 @@
-import { initialCards, Card } from './cards.js';
-import { config, FormValidator } from './validate.js';
+import { initialCards, config } from './constants.js';
+import { Card } from './Cards.js';
+import { FormValidator } from './FormValidator.js';
 
 const popups = document.querySelectorAll('.popup');
 const editPopup = document.querySelector('.edit-popup');
@@ -36,19 +37,22 @@ function closePopup (popup) {
   document.removeEventListener('keydown', closeByEscape);
 }
 
+//функция создания карточки
+function makeItem (placeInput, urlInput) {
+  const card = new Card(placeInput, urlInput, '.item-template');
+  renderCard(card.generateCard());
+}
+
 //функция добавляения нового элемента из заданых значений
 function addItem(evt) {
   evt.preventDefault();
-  const card = new Card(placeInput.value, urlInput.value, '.item-template');
-  renderCard(card.generateCard());
+  makeItem (placeInput.value, urlInput.value);
   closePopup (addingPopup);
 }
 
 //вызов функции добавления карточки в разметку из массива initialCards
 initialCards.reverse().forEach(function(item) {
-  const card = new Card(item.name, item.link, '.item-template');
-  card.generateCard();
-  renderCard(card.generateCard());
+  makeItem (item.name, item.link);
 });
 
 //слушатель добавляения нового элемента

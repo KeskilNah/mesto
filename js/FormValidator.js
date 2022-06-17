@@ -1,13 +1,3 @@
-export const config = ({
-  formSelector: 'popup__form',
-  inputSelector: 'popup__input',
-  submitButtonSelector: 'popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-}); 
-
-
 export class FormValidator {
   constructor(config, formSelector) {
     this._formSelector = formSelector;
@@ -16,6 +6,8 @@ export class FormValidator {
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
+    this._inputList = Array.from(this._formSelector.querySelectorAll(`.${this._inputSelector}`));
+    this._buttonElement = this._formSelector.querySelector(`.${this._submitButtonSelector}`);
   }
 
   _showInputError(inputElement, errorMessage) {
@@ -57,24 +49,19 @@ export class FormValidator {
   }; 
 
   enableValidation() {
-    const inputList = Array.from(this._formSelector.querySelectorAll(`.${this._inputSelector}`));
-    const buttonElement = this._formSelector.querySelector(`.${this._submitButtonSelector}`);
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._isValid(inputElement);
-        this._toggleButtonState(inputList, buttonElement);
+        this._toggleButtonState(this._inputList, this._buttonElement);
       });
     });
-    this._toggleButtonState(inputList, buttonElement);
+    this._toggleButtonState(this._inputList, this._buttonElement);
   };
 
   clearUpForm () {
-    const inputList = Array.from(this._formSelector.querySelectorAll(`.${this._inputSelector}`));
-    const buttonElement = this._formSelector.querySelector(`.${this._submitButtonSelector}`);
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
         this._hideInputError(inputElement);
     });
-    this._toggleButtonState(inputList, buttonElement);
+    this._toggleButtonState(this._inputList, this._buttonElement);
   }
-
 }
