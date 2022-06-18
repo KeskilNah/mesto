@@ -52,16 +52,16 @@ export class FormValidator {
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._isValid(inputElement);
-        this._toggleButtonState(this._inputList, this._buttonElement);
+        this._toggleButtonState();
       });
     });
-    this._toggleButtonState(this._inputList, this._buttonElement);
+    this._toggleButtonState();
   };
 
   clearUpForm () {
     this._inputList.forEach((inputElement) => {
         this._hideInputError(inputElement);
     });
-    this._toggleButtonState(this._inputList, this._buttonElement);
+    this._toggleButtonState();
   }
 }
