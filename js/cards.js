@@ -54,5 +54,4 @@ export class Card {
     this._title.textContent = this._name;
     openPopup(imgPopup);
   }
-  
 }
