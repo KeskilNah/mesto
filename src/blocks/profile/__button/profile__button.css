@@ -1,0 +1,30 @@
+.profile__button {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  min-width: 150px;
+  min-height: 50px;
+  align-self: center;
+  justify-self: end;
+  background: url(../../../images/icons/plus.svg) no-repeat center;
+  border: solid 2px #FFFFFF;
+  border-radius: 2px;
+  padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__button {
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    justify-self: center;
+    width: 282px;
+  }
+}
+
+.profile__button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
