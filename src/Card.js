@@ -1,18 +1,12 @@
-import { imgPopup} from './constants.js';
-
 export class Card {
-  constructor({item}, templateElement, openPopupImage) {
+  constructor({item}, templateSelector, openPopupImage) {
     this._name = item.name;
     this._link = item.link;
-    this._templateElement = templateElement;
+    this._templateSelector = templateSelector
+    this._templateElement = document.querySelector(this._templateSelector).content.querySelector('.item');
     this._openPopupImage = openPopupImage;
-    // this._openPopupImage = openPopupImage;
     
   }
-  // _getTemplate() {
-  //   const itemCell = document.querySelector(this._templateElement).content.querySelector('.item').cloneNode(true);
-  //  return itemCell;
-  // }
   _getTemplate() {
     const itemCell = this._templateElement.cloneNode(true);
    return itemCell;
@@ -37,8 +31,6 @@ export class Card {
     this._text = this._element.querySelector('.item__text');
     this._delete = this._element.querySelector('.item__delete');
     this._like = this._element.querySelector('.item__like');
-    this._pic = imgPopup.querySelector('.image-popup__pic');
-    this._title = imgPopup.querySelector('.image-popup__title');
     this._setEventListeners();
     this._image.alt = this._name;
     this._image.src = this._link;

@@ -1,9 +1,8 @@
 import './styles/index.css';
 
-console.log('darov');
 import { 
   btnEdit,
-  addButton,
+  btnAdd,
   cardSelector,
   initialCards,
   formValidators,
@@ -33,7 +32,11 @@ Array.from(document.forms).forEach((formElement) => {
   formValidators[formElement.name].enableValidation();
 });
 
-const viewPopup = new PopupWithImage(imagePopupSelector, popupConfiguration, viewPopupConfiguration)
+const viewPopup = new PopupWithImage(
+  imagePopupSelector,
+  popupConfiguration,
+  viewPopupConfiguration
+  )
 
 viewPopup.setEventListeners();
 
@@ -91,6 +94,6 @@ const handleProfliePopupOpen = () => {
 }
 
 //слушатель открытия попап окна с добавлением элемента при нажатии на плюсик
-addButton.addEventListener('click', addCardOpen);
+btnAdd.addEventListener('click', addCardOpen);
 
 btnEdit.addEventListener('click', handleProfliePopupOpen);

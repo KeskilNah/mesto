@@ -1,8 +1,8 @@
 export class Popup {
-  constructor(popupSelector, {activeModifier, closeBtnSelector}) {
+  constructor(popupSelector, {activeModifier, closeBtnName}) {
     this._popupSelector = popupSelector;
     this._activeModifier = activeModifier;
-    this._closeBtnSelector = closeBtnSelector;
+    this._closeBtnName = closeBtnName;
   }
 
   //закрытие попапа клавишей Esc
@@ -12,12 +12,12 @@ export class Popup {
   }
 }
   setEventListeners() {
-    this._popup = document.querySelector(`.${this._popupSelector}`);
+    this._popup = document.querySelector(this._popupSelector);
     this._popup.addEventListener('mousedown', (evt) => {
       if (evt.target.classList.contains(this._activeModifier)) {
         this.close();
       }
-      if (evt.target.classList.contains(this._closeBtnSelector)) {
+      if (evt.target.classList.contains(this._closeBtnName)) {
         this.close();
       }
     })

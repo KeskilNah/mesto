@@ -3,7 +3,7 @@ export default class Section {
     this._items = items;
     this._renderer = renderer;
     this._containerSelector = containerSelector;
-    this._container = document.querySelector(`.${this._containerSelector}`);
+    this._container = document.querySelector(this._containerSelector);
   }
 
   addItem(item) { // принимает DOM-элемент и добавляет его в контейнер.

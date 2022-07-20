@@ -26,9 +26,9 @@ export const initialCards = [
 ]; 
 
 export const btnEdit = document.querySelector('.profile__edit');
-export const addButton = document.querySelector('.profile__button');
+export const btnAdd = document.querySelector('.profile__button');
 export const imgPopup = document.querySelector('.image-popup');
-export const cardSelector = document.querySelector('.item-template').content.querySelector('.item');
+export const cardSelector = '.item-template';
 export const formValidators = {};
 
 export const config = ({
@@ -41,29 +41,28 @@ export const config = ({
 }); 
 
 export const formConfiguration = {
-  inputSelector: 'popup__input',
-  submitBtnSelector: 'popup__button',
-  formSelector: 'popup__form',
+  inputSelector: '.popup__input',
+  submitBtnSelector: '.popup__button',
 }
 
 export const popupConfiguration = {
   activeModifier: 'popup_opened',
-  closeBtnSelector: 'popup__close',
+  closeBtnName: 'popup__close',
 }
 
 export const profileConfiguration = {
-  titleSelector: 'profile__title',
-  jobSelector: 'profile__subtitle',
+  titleSelector: '.profile__title',
+  jobSelector: '.profile__subtitle',
 }
 
 export const viewPopupConfiguration = {
-  imageSelector: 'image-popup__pic',
-  captionSelector: 'image-popup__title',
+  imageSelector: '.image-popup__pic',
+  captionSelector: '.image-popup__title',
 };
 
-export const cardsContainerSelector = 'gallery__items';
-export const newPlacePopupSelector = 'adding-popup';
-export const profilePopopSelector = 'edit-popup';
-export const imagePopupSelector = 'image-popup';
+export const cardsContainerSelector = '.gallery__items';
+export const newPlacePopupSelector = '.adding-popup';
+export const profilePopopSelector = '.edit-popup';
+export const imagePopupSelector = '.image-popup';
 export const newPlaceFormName = 'adding-form';
 export const profileFormName = 'edit-form';
