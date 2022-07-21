@@ -66,3 +66,5 @@ export const profilePopopSelector = '.edit-popup';
 export const imagePopupSelector = '.image-popup';
 export const newPlaceFormName = 'adding-form';
 export const profileFormName = 'edit-form';
+export const newPlaceFormSelector = 'adding-popup__form';
+export const profileFormSelector = 'edit-popup__form';
