@@ -9,7 +9,7 @@ export class PopupWithForm extends Popup {
     this._inputSelector = inputSelector;
     this._submitBtnSelector = submitBtnSelector;
     this._getterCallBack = getterCallBack;
-    this._formElement = this._popupSelector.querySelector('.popup__form');
+    this._formElement = this._popup.querySelector('.popup__form');
     this._inputs = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     this._submitBtn = this._formElement.querySelector(this._submitBtnSelector);
     this._errorsResetCallback = errorsResetCallback;
