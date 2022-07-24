@@ -29,7 +29,7 @@ export const btnEdit = document.querySelector('.profile__edit');
 export const btnAdd = document.querySelector('.profile__button');
 export const imgPopup = document.querySelector('.image-popup');
 export const avatarEdit = document.querySelector('.profile__avatar-edit');
-export const avatarImg = document.querySelector('.profile__avatar-edit__image');
+export const avatarImg = document.querySelector('.profile__avatar-edit-image');
 export const cardSelector = '.item-template';
 export const formValidators = {};
 
