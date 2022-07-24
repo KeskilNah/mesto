@@ -1,10 +1,11 @@
 .item__like {
-  width: 22px;
-  height: 19px;
-  margin: 30px 20px;
+  min-width: 22px;
+  min-height: 19px;
+  margin: 22px 20px 0px;
   background: url(../../../images/icons/like.svg) no-repeat center;
   border: none;
   background-color: transparent;
+  background-size: auto 100%;
 }
 
 .item__like:hover {

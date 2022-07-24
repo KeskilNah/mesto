@@ -1,4 +1,4 @@
-.adding-popup__exit {
+.delete-popup__exit {
   position: absolute;
   right: -40px;
   top: -40px;
@@ -10,13 +10,13 @@
   padding: 0;
 }
 
-.adding-popup__exit:hover {
+.delete-popup__exit:hover {
   opacity: 0.6;
 
 }
 
 @media screen and (max-width: 767px) {
-  .adding-popup__exit {
+  .delete-popup__exit {
     right: 0;
     top: -36px;
     width: 20px;

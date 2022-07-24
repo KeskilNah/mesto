@@ -23,6 +23,7 @@ export class Popup {
     
   }
   open() {
+    console.log(this._popup)
     this._popup.classList.add(this._activeModifier);
     document.addEventListener('keydown', this._handleEscClose);
   };

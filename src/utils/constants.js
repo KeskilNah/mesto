@@ -28,6 +28,8 @@ export const initialCards = [
 export const btnEdit = document.querySelector('.profile__edit');
 export const btnAdd = document.querySelector('.profile__button');
 export const imgPopup = document.querySelector('.image-popup');
+export const avatarEdit = document.querySelector('.profile__avatar-edit');
+export const avatarImg = document.querySelector('.profile__avatar-edit__image');
 export const cardSelector = '.item-template';
 export const formValidators = {};
 
@@ -50,21 +52,66 @@ export const popupConfiguration = {
   closeBtnName: 'popup__close',
 }
 
+export const avatarConfiguration = {
+  avatarSelector: '.profile__avatar'
+}
+
 export const profileConfiguration = {
   titleSelector: '.profile__title',
   jobSelector: '.profile__subtitle',
+  avatarSelector: '.profile__avatar'
 }
 
-export const viewPopupConfiguration = {
+export const viewPopupImgConfiguration = {
   imageSelector: '.image-popup__pic',
   captionSelector: '.image-popup__title',
 };
+
+export const viewPopupDelConfiguration = {
+  imageSelector: '.image-popup__pic',
+  captionSelector: '.image-popup__title',
+};
+
+export const confirmButtonConfig = {
+  captionNormal: 'Да',
+  captionActive: 'Удаление...',
+}
+
+export const newCardButtonConfig = {
+  captionNormal: 'Создать',
+  captionActive: 'Сохранение...',
+}
+
+export const saveButtonConfig = {
+  captionNormal: 'Сохранить',
+  captionActive: 'Сохранение...',
+}
 
 export const cardsContainerSelector = '.gallery__items';
 export const newPlacePopupSelector = '.adding-popup';
 export const profilePopopSelector = '.edit-popup';
 export const imagePopupSelector = '.image-popup';
+export const avatarPopupSelector = '.avatar-popup';
+export const deletePopupSelector = '.delete-popup';
 export const newPlaceFormName = 'adding-form';
+export const avatarFormName = 'avatar-form';
 export const profileFormName = 'edit-form';
+export const deleteFormName = 'delete-form';
+export const deleteFormSelector = 'delete-popup__form';
 export const newPlaceFormSelector = 'adding-popup__form';
 export const profileFormSelector = 'edit-popup__form';
+
+export const options = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-45',
+  headers: {
+    authorization: 'de4ccc24-3897-4b25-93ca-7c2376f1a4ac',
+    "Content-Type": "aplication/json",
+  },
+};
+
+// export const getUserInfomation = {
+//   url: 'https://mesto.nomoreparties.co/v1/cohort-45/users/me',
+//   headers: {
+//     'authorization': 'de4ccc24-3897-4b25-93ca-7c2376f1a4ac'
+//   }
+// };

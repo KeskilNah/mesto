@@ -17,21 +17,21 @@
           class="edit-popup__text-name popup__input" 
           value="Жак-Ив Кусто" 
           placeholder="Имя" 
-          id="input-title" 
+          id="input-name" 
           required 
           minlength="2" 
           maxlength="40">
-        <p class="popup__error input-title-error">asd</p>
+        <p class="popup__error input-name-error">asd</p>
         <input
           type="text"
           class="edit-popup__text-description popup__input"
           value="Исследователь океана"
           placeholder="Род деятельности"
-          id="input-description"
+          id="input-about"
           required 
           minlength="2"
           maxlength="200">
-        <p class="popup__error input-description-error">asd</p>
+        <p class="popup__error input-about-error">asd</p>
         <button type="submit" class="edit-popup__save-button popup__button">Сохранить</button>
       </form>
     </div>
@@ -49,8 +49,8 @@
           required 
           minlength="2" 
           maxlength="30" 
-          id="input-name">
-        <p class="popup__error input-name-error">asd</p>
+          id="input-place">
+        <p class="popup__error input-place-error">asd</p>
         <input 
           type="url" 
           class="adding-popup__text-url popup__input" 
@@ -70,6 +70,33 @@
       <img src="<%=require('./images/avatar(1).png')%>" alt="" class="image-popup__pic">
     </div>
   </div>
+  <div class="delete-popup popup">
+    <div class="delete-popup__container">
+      <button class="delete-popup__exit popup__close"></button>
+      <form class="delete-popup__form popup__form" name="delete-form" novalidate>
+        <button type="submit" class="delete-popup__save-button popup__button">Да</button>
+      </form>
+      <h2 class="delete-popup__title">Вы уверены?</h2>
+    </div>
+  </div>
+  <div class="avatar-popup popup">
+    <div class="avatar-popup__container">
+      <button class="avatar-popup__exit popup__close"></button>
+      <h2 class="avatar-popup__title">Обновить аватар</h2>
+      <form class="avatar-popup__form popup__form" name="avatar-form" novalidate>
+        <input 
+          type="url" 
+          class="avatar-popup__text-url popup__input" 
+          placeholder="Ссылка на картинку" 
+          value="" 
+          required 
+          id="input-avatar">
+        <p class="popup__error input-avatar-error">asd</p>
+        <button type="submit" class="adding-popup__save-button popup__button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
   <div class="page__wrapper">
     <header class="header">
       <img src="<%=require('./images/logo.svg')%>" alt="лого_место" class="header__logo">
@@ -77,7 +104,10 @@
     <main class="main">
       <section class="profile">
         <div class="profile__wrapper">
-          <img src="<%=require('./images/avatar(1).png')%>" alt="Жак-Ив Кусто" class="profile__avatar">
+          <img src="<%=require('./images/dombai.png')%>" alt="Жак-Ив Кусто" class="profile__avatar">
+          <div class="profile__avatar-edit">
+            <img src="<%=require('./images/icons/avatar-edit.svg')%>" alt="карандашик" class="profile__avatar-edit__image">
+          </div>
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button type="button" class="profile__edit"></button>
           <p class="profile__subtitle">Исследователь океана</p>
@@ -101,7 +131,10 @@
       <img src="#" alt="#" class="item__image">
       <div class="item__description">
         <p class="item__text"></p>
-        <button type="button" class="item__like"></button>
+        <div>
+          <button type="button" class="item__like"></button>
+          <p class="item__number">1</p>
+        </div>
       </div>
       <button class="item__delete"></button>
     </li>

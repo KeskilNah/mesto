@@ -1,0 +1,9 @@
+.item__number {
+  margin: 3px auto 0px;
+  max-width: 10px;
+  max-height: 13px;
+  color: #000000;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+}
