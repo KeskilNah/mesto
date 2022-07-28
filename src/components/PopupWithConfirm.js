@@ -5,49 +5,54 @@ export class PopupWithConfirm extends Popup {
     popupSelector,
     popupConfig,
     formSelector,
+    submitButtonSelector,
     handleSubmitCallback,
     {captionNormal, captionActive}
     ) {
     super(popupSelector, popupConfig);
     this._formSelector = formSelector;
-    this._handleSubmitCallback = handleSubmitCallback;
+    this._handleConfirm = handleSubmitCallback;
     this._formElement = this._popup.querySelector(this._formSelector);
-    this.toggleSubmitBtnCaption = this.toggleSubmitBtnCaption.bind(this);
     this._captionActive = captionActive;
     this._captionNormal = captionNormal;
+    this.toggleSubmitBtnCaption = this.toggleSubmitBtnCaption.bind(this);
+    this._submitButton = this._popup.querySelector(submitButtonSelector);
     this._submitCallbacks = {
       toggleBtnCallback: this.toggleSubmitBtnCaption,
       removeCardCallback: () => {},
       closeConfirmCallback: this.close,
     };
-    this.open = this.open.bind(this);
-    this.close = this.close.bind(this);
+    // this.open = this.open.bind(this);
+    // this.close = this.close.bind(this);
+    console.log(this)
   }
 
-  toggleSubmitBtnCaption(state) {
-    this._submitBtn.textContent = state ? this._captionActive : this._captionNormal;
+  toggleSubmitBtnCaption (state) {
+    this._submitButton.textContent = state
+    ? this._captionActive
+    : this._captionNormal;
   }
 
   _handleSubmit = (evt) => {
     evt.preventDefault();
-    this._handleSubmit(this._id, this._submitCallbacks);
+    this._handleConfirm(this._id, this._submitCallbacks);
   }
 
-  open(id, deleteCardCallback) {
+  open = (id, deleteCardCallback) => {
     this._id = id;
     this._submitCallbacks.removeCardCallback = deleteCardCallback;
     super.open();
   }
 
-  close() {
+  close = () => {
     super.close();
     this._id = null;
     this._submitCallbacks.removeCardCallback = () => {};
   }
 
-  setEventListeners() {
+  setEventListeners = () => {
     super.setEventListeners();
-    this._popup.addEventListener('submit', this._handleSubmit);
+    this._formElement.addEventListener('submit', this._handleSubmit);
   }
 
 }

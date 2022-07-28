@@ -97,7 +97,7 @@ export const newPlaceFormName = 'adding-form';
 export const avatarFormName = 'avatar-form';
 export const profileFormName = 'edit-form';
 export const deleteFormName = 'delete-form';
-export const deleteFormSelector = 'delete-popup__form';
+export const deleteFormSelector = '.delete-popup__form';
 export const newPlaceFormSelector = 'adding-popup__form';
 export const profileFormSelector = 'edit-popup__form';
 
@@ -105,7 +105,7 @@ export const options = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-45',
   headers: {
     authorization: 'de4ccc24-3897-4b25-93ca-7c2376f1a4ac',
-    'Content-Type': 'aplication/json',
+    "Content-Type": "application/json",
   },
 };
 

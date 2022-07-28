@@ -21,21 +21,19 @@ export class Api {
 
   }
 
-  setCard(data) {
-    console.log(data);
-    return fetch(`${this._url}/cards`, {
+  setCard(card) {
+    console.log(card)
+    return fetch (`${this._url}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: data.palce,
-        link: data.link,
-      })
+        name: card.place,
+        link: card.link,
+      }),
     }).then(this._errorChecking);
   }
 
   editProfile(data) {
-    console.log(data.name);
-    console.log(data.about);
     return fetch (`${this._url}/users/me`, {
       method: "PATCH",
       headers: this._headers,
@@ -51,7 +49,7 @@ export class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: link,
+        avatar: link.avatar,
       })
     }).then(this._errorChecking);
   }
@@ -61,7 +59,7 @@ export class Api {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: card.name,
+        name: card.place,
         link: card.link,
       })
     }).then(this._errorChecking);
@@ -76,7 +74,7 @@ export class Api {
   }
 
   deleteCard(id) {
-    return fetch (`${this._url}/cards/cards${id}`, {
+    return fetch (`${this._url}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
     }).then(this._errorChecking);

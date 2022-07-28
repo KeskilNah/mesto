@@ -80,9 +80,10 @@ function handleLikeCard (cardId, isLiked, setLikesCallback) {
 function handleDeleteCard(id, {toggleBtnCallback, removeCardCallback, closeConfirmCallback}) {
   toggleBtnCallback(true);
   api.deleteCard(id).then(() => {
+    console.log(id)
     removeCardCallback();
   }) .catch(console.log())
-  .finaly(() => {
+  .finally(() => {
     closeConfirmCallback();
     toggleBtnCallback(false);
   })
@@ -92,6 +93,7 @@ const confirmDeletePopup = new PopupWithConfirm(
   deletePopupSelector,
   popupConfiguration,
   deleteFormSelector,
+  formConfiguration.submitBtnSelector,
   handleDeleteCard,
   confirmButtonConfig
 )
@@ -106,7 +108,7 @@ const newCardCallbacks = {
 };
 
 const handleCardSubmit = (item, toggleBtnCallback, closePopupCallback) => {
-  console.dir(item);
+  console.log(item);
   toggleBtnCallback(true);
   api
     .setCard(item)
@@ -143,6 +145,7 @@ const cardsContainer = new Section(
 
 api.getCards().then((res) => {
   cardsContainer.renderItems(res);
+  console.dir(res)
 })
 
 
@@ -270,9 +273,9 @@ btnEdit.addEventListener('click', handleProfliePopupOpen);
 
 avatarEdit.addEventListener('click', editAvatarOpen);
 
-Promise.all([api.getUserInfo(), api.getCards()]).then(
-  ([userNew, cards]) => {
-    user.setUserInfo(userNew);
-    cardsContainer.renderItems(cards.reverse());
-  }
-)
+// Promise.all([api.getUserInfo(), api.getCards()]).then(
+//   ([userNew, cards]) => {
+//     user.setUserInfo(userNew);
+//     cardsContainer.renderItems(cards);
+//   }
+// )

@@ -10,6 +10,7 @@ export default class Section {
   }
   
   renderItems(items) { // отвечает за отрисовку всех элементов. Отрисовка каждого отдельного элемента 
+    items.reverse();
     items.forEach(item => {
       this.addItem(item);
     })
