@@ -16,7 +16,7 @@ export class PopupWithForm extends Popup {
     this._submitCallBack = submitCallBack;
     this._inputSelector = inputSelector;
     this._submitBtnSelector = submitBtnSelector;
-    
+    // console.log(this._formName)
     this._getterCallBack = getterCallBack;
     this._formSelector = formSelector;
     this._errorsResetCallback = errorsResetCallback;
@@ -26,7 +26,7 @@ export class PopupWithForm extends Popup {
     this._captionNormal = captionNormal;
     this._captionActive = captionActive;
     this.toggleSubmitBtnCaption = this.toggleSubmitBtnCaption.bind(this);
-
+    console.log(this)
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
   }
@@ -35,15 +35,16 @@ export class PopupWithForm extends Popup {
     this._submitBtn.textContent = state ? this._captionActive : this._captionNormal;
   }
 
-  _getInputValues() {
+  _getInputValues = () => {
     const values = {};
     this._inputs.forEach((inputElement) => {
       values[inputElement.id.slice(6)] = inputElement.value;
     });
+    console.log(values, this._inputs)
     return values;
   }
 
-  _setInputValues(values) {
+  _setInputValues = (values) => {
     this._inputs.forEach((inputElement) => {
       inputElement.value = values[inputElement.id.slice(6)];
     });
@@ -52,9 +53,11 @@ export class PopupWithForm extends Popup {
 
   _handleSubmit = (evt) => {
     evt.preventDefault();
-    this._submitCallBack(this._getInputValues(),
-    this.toggleSubmitBtnCaption,
-    this.close);
+    console.log(this._submitCallBack)
+    this._submitCallBack(
+      this._getInputValues(),
+      this.toggleSubmitBtnCaption,
+      this.close);
     this.close();
 
   }

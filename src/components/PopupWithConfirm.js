@@ -1,13 +1,20 @@
 import { Popup } from './Popup.js';
 
 export class PopupWithConfirm extends Popup {
-  constructor (popupSelector, popupConfig, formSelector, handleSubmitCallback, {captionNormal, captionActive}) {
+  constructor (
+    popupSelector,
+    popupConfig,
+    formSelector,
+    handleSubmitCallback,
+    {captionNormal, captionActive}
+    ) {
     super(popupSelector, popupConfig);
     this._formSelector = formSelector;
     this._handleSubmitCallback = handleSubmitCallback;
     this._formElement = this._popup.querySelector(this._formSelector);
     this.toggleSubmitBtnCaption = this.toggleSubmitBtnCaption.bind(this);
-    console.log(this._captionNormal, this._captionActive)
+    this._captionActive = captionActive;
+    this._captionNormal = captionNormal;
     this._submitCallbacks = {
       toggleBtnCallback: this.toggleSubmitBtnCaption,
       removeCardCallback: () => {},

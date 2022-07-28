@@ -22,6 +22,7 @@ export class Api {
   }
 
   setCard(data) {
+    console.log(data);
     return fetch(`${this._url}/cards`, {
       method: "POST",
       headers: this._headers,
@@ -33,13 +34,14 @@ export class Api {
   }
 
   editProfile(data) {
-    console.log(data)
+    console.log(data.name);
+    console.log(data.about);
     return fetch (`${this._url}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
-        link: data.about,
+        about: data.about,
       })
     }).then(this._errorChecking);
   }
@@ -56,7 +58,7 @@ export class Api {
 
   addingNewCard(card) {
     return fetch (`${this._url}/cards`, {
-      method: "PATCH",
+      method: "POST",
       headers: this._headers,
       body: JSON.stringify({
         name: card.name,
@@ -84,7 +86,7 @@ export class Api {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`ОШИБКАЖ ${res.message}`);
+    return Promise.reject(`ОШИБКА: ${res.message}`);
   }
 }
 

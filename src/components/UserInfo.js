@@ -10,9 +10,9 @@ export class UserInfo {
   }
 
   setUserInfo = (data) => {
-    this._titleElement.textContent = data.name || '';
-    this._jobElement.textContent = data.about || '';
-    this._avatarElement.src = data.avatar || '';
+    this._titleElement.textContent = data?.name || '';
+    this._jobElement.textContent = data?.about || '';
+    this._avatarElement.src = data?.avatar || '';
     this._name = data.name;
     this._about = data.about;
     this._avatar = data.avatar;

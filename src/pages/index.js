@@ -58,18 +58,17 @@ const api = new Api({url: options.url, headers: options.headers})
 
 api.getUserInfo().then((res) => {
   user.setUserInfo(res);
-  console.log(res);
 });
 
 
 
-const viewPopupImg = new PopupWithImage(
+const viewPopup = new PopupWithImage(
   imagePopupSelector,
   popupConfiguration,
   viewPopupImgConfiguration
   )
 
-viewPopupImg.setEventListeners();
+viewPopup.setEventListeners();
 
 function handleLikeCard (cardId, isLiked, setLikesCallback) {
   api
@@ -93,7 +92,6 @@ const confirmDeletePopup = new PopupWithConfirm(
   deletePopupSelector,
   popupConfiguration,
   deleteFormSelector,
-  formConfiguration.submitBtnSelector,
   handleDeleteCard,
   confirmButtonConfig
 )
@@ -101,17 +99,36 @@ const confirmDeletePopup = new PopupWithConfirm(
 confirmDeletePopup.setEventListeners()
 
 const newCardCallbacks = {
-  handleOpenCallback: viewPopupImg.open,
+  handleOpenCallback: viewPopup.open,
   handleLikeCallback: handleLikeCard,
   handleDeleteCallback: confirmDeletePopup.open, 
 
 };
 
+const handleCardSubmit = (item, toggleBtnCallback, closePopupCallback) => {
+  console.dir(item);
+  toggleBtnCallback(true);
+  api
+    .setCard(item)
+    .then((card) => {
+      console.log(`СМАРИ: ${card}`)
+      cardsContainer.addItem(card);
+      closePopupCallback;
+    })
+    .catch(console.log)
+    .finally(() => {
+      toggleBtnCallback(false);
+    });
+  // cardsContainer.addItem(item);
+}
+
 const makeItem = (item) => {
+  // console.dir(item)
+  // console.dir(newCardCallbacks);
   const card = new Card(
     item,
     cardSelector,
-    user.id,
+    user._id,
     newCardCallbacks
     );
   return card.generateCard();
@@ -127,23 +144,6 @@ const cardsContainer = new Section(
 api.getCards().then((res) => {
   cardsContainer.renderItems(res);
 })
-
-
-
-const handleCardSubmit = (item, toggleBtnCallback, closePopupCallback) => {
-  toggleBtnCallback(true);
-  api
-    .setCard(item)
-    .then((card) => {
-      cardsContainer.addItem(card);
-      closePopupCallback;
-    })
-    .catch(console.log)
-    .finally(() => {
-      toggleBtnCallback(false);
-    });
-  // cardsContainer.addItem(item);
-}
 
 
 //Привязываем валидацию ко всем формам
@@ -182,14 +182,15 @@ editAvatarPopup.setEventListeners();
 
 function handleAvatarSubmit(data, toggleBtnCallback, closePopupCallback) {
   toggleBtnCallback(true);
+  console.log(data.avatar)
   api
-    .editAvatar(data.link)
+    .editAvatar(data)
     .then((res) => {
       user.setUserInfo(res);
       closePopupCallback();
     })
     .catch(console.log)
-    .finaly(() => toggleBtnCallback(false))
+    .finally(() => toggleBtnCallback(false))
 }
 
 function handleSubmitProfile(data, toggleBtnCallback, closePopupCallback) {
@@ -218,12 +219,6 @@ const profilePopup = new PopupWithForm (
 profilePopup.setEventListeners();
 
 
-
-
-
-
-
-
 // user.getUserInfo().then(res => {
 //   console.dir(`AVATAR: ${res.avatar}`);
 //   changeAvatar(res);
@@ -233,16 +228,6 @@ profilePopup.setEventListeners();
 //   console.log(`asdasd${res}`);
 //   changeName(res)
 // })
-
-
-
-
-
-
-
-
-
-
 
 
 // const avatar = new Avatar(avatarConfiguration);
@@ -288,6 +273,6 @@ avatarEdit.addEventListener('click', editAvatarOpen);
 Promise.all([api.getUserInfo(), api.getCards()]).then(
   ([userNew, cards]) => {
     user.setUserInfo(userNew);
-    cardsContainer.addItem(cards.reverse());
+    cardsContainer.renderItems(cards.reverse());
   }
 )
