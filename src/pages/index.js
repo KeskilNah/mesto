@@ -5,7 +5,6 @@ import {
   btnAdd,
   avatarEdit,
   cardSelector,
-  initialCards,
   formValidators,
   config, 
   formConfiguration, 
@@ -21,10 +20,7 @@ import {
   options,
   avatarPopupSelector,
   avatarFormName,
-  avatarImg,
-  avatarConfiguration,
   deletePopupSelector,
-  deleteFormName,
   deleteFormSelector,
   confirmButtonConfig,
   newCardButtonConfig,
@@ -38,29 +34,10 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js'
-import { Avatar } from '../components/Avatar.js';
 import { PopupWithConfirm } from '../components/PopupWithConfirm.js';
 
 
 const api = new Api({url: options.url, headers: options.headers})
-
-// const newItems = api.getCards().then((res) => {
-  
-//   return newItems;
-// })
-// console.log(`AAAA${newItems}`)
-// const cardsContainer = new Section({
-//   items: newItems.map(item => item).reverse(),
-//   renderer: makeItem,
-// }, cardsContainerSelector)
-
-// cardsContainer.renderAll();
-
-api.getUserInfo().then((res) => {
-  user.setUserInfo(res);
-});
-
-
 
 const viewPopup = new PopupWithImage(
   imagePopupSelector,
@@ -74,22 +51,20 @@ function handleLikeCard (cardId, isLiked, setLikesCallback) {
   api
     .toggleLike(cardId, isLiked)
     .then(({likes}) => setLikesCallback(likes))
-    .catch(console.log);
 }
 
 function handleDeleteCard(id, {toggleBtnCallback, removeCardCallback, closeConfirmCallback}) {
   toggleBtnCallback(true);
   api.deleteCard(id).then(() => {
-    console.log(id)
     removeCardCallback();
+    closeConfirmCallback();
   }) .catch(console.log())
   .finally(() => {
-    closeConfirmCallback();
     toggleBtnCallback(false);
   })
 }
 
-const confirmDeletePopup = new PopupWithConfirm(
+const сonfirmationDeletePopup = new PopupWithConfirm(
   deletePopupSelector,
   popupConfiguration,
   deleteFormSelector,
@@ -98,39 +73,34 @@ const confirmDeletePopup = new PopupWithConfirm(
   confirmButtonConfig
 )
 
-confirmDeletePopup.setEventListeners()
+сonfirmationDeletePopup.setEventListeners()
 
 const newCardCallbacks = {
   handleOpenCallback: viewPopup.open,
   handleLikeCallback: handleLikeCard,
-  handleDeleteCallback: confirmDeletePopup.open, 
+  handleDeleteCallback: сonfirmationDeletePopup.open, 
 
 };
 
 const handleCardSubmit = (item, toggleBtnCallback, closePopupCallback) => {
-  console.log(item);
   toggleBtnCallback(true);
   api
     .setCard(item)
     .then((card) => {
-      console.log(`СМАРИ: ${card}`)
       cardsContainer.addItem(card);
-      closePopupCallback;
+      closePopupCallback();
     })
     .catch(console.log)
     .finally(() => {
       toggleBtnCallback(false);
     });
-  // cardsContainer.addItem(item);
 }
 
 const makeItem = (item) => {
-  // console.dir(item)
-  // console.dir(newCardCallbacks);
   const card = new Card(
     item,
     cardSelector,
-    user._id,
+    user.id,
     newCardCallbacks
     );
   return card.generateCard();
@@ -143,18 +113,21 @@ const cardsContainer = new Section(
   cardsContainerSelector
 );
 
-api.getCards().then((res) => {
-  cardsContainer.renderItems(res);
-  console.dir(res)
-})
-
+Promise.all([api.getUserInfo(), api.getCards()])
+  .then
+    (([info, initialCards]) => {
+      user.setUserInfo(info);
+      cardsContainer.renderItems(initialCards);
+    })
+  .catch((err) => {
+    console.log(err);
+  })
 
 //Привязываем валидацию ко всем формам
 Array.from(document.forms).forEach((formElement) => {
   formValidators[formElement.name] = new FormValidator(config, formElement);
   formValidators[formElement.name].enableValidation();
 });
-
 
 const newCardPopup = new PopupWithForm(
   newPlacePopupSelector,
@@ -171,7 +144,7 @@ newCardPopup.setEventListeners();
 
 const user = new UserInfo(profileConfiguration);
 
-const editAvatarPopup = new PopupWithForm(
+const editingAvatarPopup = new PopupWithForm(
   avatarPopupSelector,
   avatarFormName,
   popupConfiguration,
@@ -181,11 +154,10 @@ const editAvatarPopup = new PopupWithForm(
   saveButtonConfig
   );
 
-editAvatarPopup.setEventListeners();
+editingAvatarPopup.setEventListeners();
 
 function handleAvatarSubmit(data, toggleBtnCallback, closePopupCallback) {
   toggleBtnCallback(true);
-  console.log(data.avatar)
   api
     .editAvatar(data)
     .then((res) => {
@@ -221,46 +193,13 @@ const profilePopup = new PopupWithForm (
 
 profilePopup.setEventListeners();
 
-
-// user.getUserInfo().then(res => {
-//   console.dir(`AVATAR: ${res.avatar}`);
-//   changeAvatar(res);
-// })
-
-// newUserInfo.getUserInfo().then(res => {
-//   console.log(`asdasd${res}`);
-//   changeName(res)
-// })
-
-
-// const avatar = new Avatar(avatarConfiguration);
-
-// function changeAvatar(data) {
-//   avatar.setAvatar(data);
-// }
-
-
-
   const editAvatarOpen = () => {
-    editAvatarPopup.open();
+    editingAvatarPopup.open();
   }
-
-
-
-
-
 
 const addCardOpen = () => {
   newCardPopup.open()
 }
-
-
-// //функция изменения имени и описания
-// function changeName(data) {
-//   user.setUserInfo(data);
-// }
-
-
 
 const handleProfliePopupOpen = () => {
   profilePopup.open();
@@ -272,10 +211,3 @@ btnAdd.addEventListener('click', addCardOpen);
 btnEdit.addEventListener('click', handleProfliePopupOpen);
 
 avatarEdit.addEventListener('click', editAvatarOpen);
-
-// Promise.all([api.getUserInfo(), api.getCards()]).then(
-//   ([userNew, cards]) => {
-//     user.setUserInfo(userNew);
-//     cardsContainer.renderItems(cards);
-//   }
-// )

@@ -8,7 +8,7 @@ export class Api {
     return fetch(`${this._url}/cards`, {
       headers: this._headers,
     })
-    .then(this._errorChecking);
+    .then(this._checkError);
 
   }
 
@@ -17,12 +17,11 @@ export class Api {
       method: "GET",
       headers: this._headers
     })
-    .then(this._errorChecking);
+    .then(this._checkError);
 
   }
 
   setCard(card) {
-    console.log(card)
     return fetch (`${this._url}/cards`, {
       method: "POST",
       headers: this._headers,
@@ -30,7 +29,7 @@ export class Api {
         name: card.place,
         link: card.link,
       }),
-    }).then(this._errorChecking);
+    }).then(this._checkError);
   }
 
   editProfile(data) {
@@ -41,7 +40,7 @@ export class Api {
         name: data.name,
         about: data.about,
       })
-    }).then(this._errorChecking);
+    }).then(this._checkError);
   }
 
   editAvatar(link) {
@@ -51,18 +50,7 @@ export class Api {
       body: JSON.stringify({
         avatar: link.avatar,
       })
-    }).then(this._errorChecking);
-  }
-
-  addingNewCard(card) {
-    return fetch (`${this._url}/cards`, {
-      method: "POST",
-      headers: this._headers,
-      body: JSON.stringify({
-        name: card.place,
-        link: card.link,
-      })
-    }).then(this._errorChecking);
+    }).then(this._checkError);
   }
 
   toggleLike(cardId, isLiked) {
@@ -70,32 +58,20 @@ export class Api {
       method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
     })
-    .then(this._errorChecking);
+    .then(this._checkError);
   }
 
   deleteCard(id) {
     return fetch (`${this._url}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._errorChecking);
+    }).then(this._checkError);
   }
 
-  _errorChecking(res) {
+  _checkError(res) {
     if (res.ok) {
       return res.json();
     }
     return Promise.reject(`ОШИБКА: ${res.message}`);
   }
 }
-
-
-
-// fetch('https://mesto.nomoreparties.co/v1/cohort-45/users/me', {
-//   headers: {
-//     authorization: 'de4ccc24-3897-4b25-93ca-7c2376f1a4ac'
-//   }
-// })
-//   .then(res => res.json())
-//   .then((result) => {
-//     console.log(result);
-//   });

@@ -22,9 +22,6 @@ export class PopupWithConfirm extends Popup {
       removeCardCallback: () => {},
       closeConfirmCallback: this.close,
     };
-    // this.open = this.open.bind(this);
-    // this.close = this.close.bind(this);
-    console.log(this)
   }
 
   toggleSubmitBtnCaption (state) {

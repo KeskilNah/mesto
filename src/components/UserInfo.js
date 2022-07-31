@@ -13,9 +13,6 @@ export class UserInfo {
     this._titleElement.textContent = data?.name || '';
     this._jobElement.textContent = data?.about || '';
     this._avatarElement.src = data?.avatar || '';
-    this._name = data.name;
-    this._about = data.about;
-    this._avatar = data.avatar;
     this._id = data._id;
   }
 
@@ -25,11 +22,6 @@ export class UserInfo {
       about: this._jobElement.textContent,
       avatar: this._avatarElement.src
     };
-  }
-  getUserAvatar() {
-    return {
-      avatar: this._avatar
-    }
   }
 
   get id(){

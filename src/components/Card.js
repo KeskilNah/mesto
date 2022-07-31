@@ -4,11 +4,6 @@ export class Card {
     cardSelector,
     userId,
     {handleOpenCallback, handleLikeCallback, handleDeleteCallback }) {
-    
-    // console.log(`_id = ${_id}, \nname = ${name}, \nlink = ${link}, \nowner: `);
-    // console.dir(owner);
-    // console.log(`likes:`);
-    // console.dir(likes);
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector
